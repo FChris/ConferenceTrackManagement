@@ -20,15 +20,36 @@ public class Session {
     }
 
     public static Session createMorningSession() {
-        throw new RuntimeException("Not implemented");
+        Session session = new Session();
+        session.talks = new ArrayList<>();
+        session.startTime = LocalTime.of(9, 0);
+        session.currentEndTime = LocalTime.of(9, 0);
+        session.endTime = LocalTime.of(12,0);
+        session.allowNonFilled = false;
+        session.endEvent = ConferenceEvent.LUNCH;
+        return session;
     }
 
     public static Session createAfternoonSession() {
-        throw new RuntimeException("Not implemented");
+        Session session = new Session();
+        session.talks = new ArrayList<>();
+        session.startTime = LocalTime.of(13, 0);
+        session.currentEndTime = LocalTime.of(13, 0);
+        session.endTime = LocalTime.of(17,0);
+        session.allowNonFilled = true;
+        session.endEvent = ConferenceEvent.NETWORKING;
+        return session;
     }
 
     public boolean addTalk(Talk talk) {
-        throw new RuntimeException("Not implemented");
+        LocalTime newEndTime = currentEndTime.plusMinutes(talk.length());
+        if (newEndTime.isAfter(endTime)) {
+            return false;
+        }
+
+        talks.add(talk);
+        currentEndTime = newEndTime;
+        return true;
     }
 
     public ConferenceEvent getEndEvent() {
