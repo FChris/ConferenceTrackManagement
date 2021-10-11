@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SessionTest {
 
     @Test
-    public void InitMorningSessionTest() {
+    public void initMorningSessionTest() {
         Session morningSession = Session.createMorningSession();
         assertEquals(morningSession.getEndEvent().title(), "Lunch");
         assertEquals(morningSession.getStartTime().compareTo(LocalTime.of(9,0)), 0);
@@ -20,7 +20,7 @@ class SessionTest {
     }
 
     @Test
-    public void InitAfternoonSessionTest() {
+    public void initAfternoonSessionTest() {
         Session morningSession = Session.createAfternoonSession();
         assertEquals(morningSession.getEndEvent().title(), "Networking");
         assertEquals(morningSession.getStartTime().compareTo(LocalTime.of(13,0)), 0);
@@ -31,7 +31,7 @@ class SessionTest {
     }
 
     @Test
-    public void AddTalkToNewSession() {
+    public void addTalkToNewSession() {
         Talk hourTalk = new Talk("Full hour talk on constraint solvers", 60);
         Session session = Session.createMorningSession();
         boolean success = session.addTalk(hourTalk);
