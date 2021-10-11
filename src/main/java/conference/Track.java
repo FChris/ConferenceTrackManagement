@@ -13,4 +13,12 @@ public class Track {
     public boolean addTalk(Talk talk) {
         throw new RuntimeException("Not implemented");
     }
+
+    public Session getMorningSession() {
+        return morningSession;
+    }
+
+    public Session getAfternoonSession() {
+        return afternoonSession;
+    }
 }
