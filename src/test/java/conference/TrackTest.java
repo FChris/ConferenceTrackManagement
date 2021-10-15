@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 class TrackTest {
 
     @Test
-    public void addTalkToEmptyTrack() {
+    public void testAddTalkToEmptyTrack() {
         Track track = new Track();
         Talk hourTalk = new Talk("Test Talk for an hour", 60);
         boolean success = track.addTalk(hourTalk);
@@ -17,7 +17,7 @@ class TrackTest {
     }
 
     @Test
-    public void addTalkToTrackWithFullMorningSession() {
+    public void testAddTalkToTrackWithFullMorningSession() {
         Track track = new Track();
         Talk threeHourTalk = new Talk("Test Talk for three hours", 180);
         boolean success = track.addTalk(threeHourTalk);
@@ -29,7 +29,8 @@ class TrackTest {
         Assertions.assertEquals(track.getAfternoonSession().getTalks().get(0), hourTalk);
     }
 
-    @Test void trackToStringTest() {
+    @Test
+    public void testTrackToString() {
         Track track = new Track();
         Talk threeHourTalk1 = new Talk("Three hour talk", 180);
         Talk threeHourTalk2 = new Talk("Three hour talk number two", 180);
