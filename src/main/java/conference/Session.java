@@ -3,6 +3,7 @@ package conference;
 import java.time.LocalTime;
 
 
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -13,7 +14,6 @@ public class Session {
     private LocalTime startTime;
     private LocalTime endTime; // end time of last talk
     private LocalTime currentEndTime;
-    private boolean allowNonFilled; // allow that there is a gap between the last talk and the end event
 
     private Session() {
         // private constructor to prevent wrong initialization
@@ -25,7 +25,6 @@ public class Session {
         session.startTime = LocalTime.of(9, 0);
         session.currentEndTime = LocalTime.of(9, 0);
         session.endTime = LocalTime.of(12,0);
-        session.allowNonFilled = false;
         session.endEvent = ConferenceEvent.LUNCH;
         return session;
     }
@@ -36,7 +35,6 @@ public class Session {
         session.startTime = LocalTime.of(13, 0);
         session.currentEndTime = LocalTime.of(13, 0);
         session.endTime = LocalTime.of(17,0);
-        session.allowNonFilled = true;
         session.endEvent = ConferenceEvent.NETWORKING;
         return session;
     }
@@ -47,6 +45,7 @@ public class Session {
             return false;
         }
 
+        talk.setStartTime(currentEndTime);
         talks.add(talk);
         currentEndTime = newEndTime;
         return true;
@@ -72,7 +71,32 @@ public class Session {
         return currentEndTime;
     }
 
-    public boolean isAllowNonFilled() {
-        return allowNonFilled;
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (Talk talk : this.talks) {
+            builder.append(talk.toString());
+            builder.append("\n");
+        }
+
+        DateTimeFormatter dtf = DateTimeFormatter.ofPattern("hh:mma");
+
+        if (endEvent.equals(ConferenceEvent.NETWORKING)) {
+            String networkingTime;
+            if (currentEndTime.isAfter(LocalTime.of(16, 0))) {
+                networkingTime = LocalTime.of(17, 0).format(dtf);
+            } else {
+                networkingTime = LocalTime.of(16, 0).format(dtf);
+            }
+            builder.append(networkingTime);
+            builder.append(" ");
+            builder.append(endEvent.toString());
+        } else {
+            builder.append(currentEndTime.format(dtf));
+            builder.append(" ");
+            builder.append(endEvent.toString());
+        }
+
+        return builder.toString();
     }
 }
