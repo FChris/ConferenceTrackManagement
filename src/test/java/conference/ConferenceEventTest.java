@@ -9,12 +9,12 @@ class ConferenceEventTest {
     public void lunchStringTest() {
         ConferenceEvent lunch = new ConferenceEvent("Lunch", 60);
         String stringOfLunch = "Lunch";
-        Assertions.assertEquals(lunch.toString(), stringOfLunch);
+        Assertions.assertEquals(stringOfLunch, lunch.toString());
     }
 
     @Test
     public void networkingEventStringTest() {
         String stringOfNetworking = "Networking";
-        Assertions.assertEquals(stringOfNetworking, ConferenceEvent.NETWORKING.toString());
+        Assertions.assertEquals(ConferenceEvent.NETWORKING.toString(), stringOfNetworking);
     }
 }

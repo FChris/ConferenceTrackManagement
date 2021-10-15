@@ -6,9 +6,6 @@ import org.junit.jupiter.api.Test;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.stream.Collectors;
-
-import static org.junit.jupiter.api.Assertions.fail;
 
 class ConferenceTest {
 
@@ -19,9 +16,9 @@ class ConferenceTest {
 
         Conference conference = new Conference(Arrays.asList(intro, fullAfternoon));
 
-        Assertions.assertEquals(conference.getTracks().size(), 1);
-        Assertions.assertEquals(conference.getTracks().get(0).getMorningSession().getTalks().get(0), intro);
-        Assertions.assertEquals(conference.getTracks().get(0).getAfternoonSession().getTalks().get(0), fullAfternoon);
+        Assertions.assertEquals(1, conference.getTracks().size());
+        Assertions.assertEquals(intro, conference.getTracks().get(0).getMorningSession().getTalks().get(0));
+        Assertions.assertEquals(fullAfternoon, conference.getTracks().get(0).getAfternoonSession().getTalks().get(0));
     }
 
     @Test
@@ -29,7 +26,7 @@ class ConferenceTest {
         List<Talk> talks = getTalkList();
         Conference conference = new Conference(talks);
 
-        Assertions.assertEquals(conference.getTracks().size(), 2);
+        Assertions.assertEquals(2, conference.getTracks().size());
         int talksInConf = conference.getTracks().stream()
                 .mapToInt(x -> x.getMorningSession().getTalks().size() + x.getAfternoonSession().getTalks().size())
                 .sum();
@@ -38,7 +35,7 @@ class ConferenceTest {
 
     @Test
     public void testThreeTrackConference() {
-        List<Talk> talks = getTalkList();
+        ArrayList<Talk> talks = new ArrayList<>(getTalkList()); // add second list to allow extending
         talks.add(new Talk("Stackoverflow is your best friend", 60));
         Conference conference = new Conference(talks);
 
@@ -48,7 +45,6 @@ class ConferenceTest {
                 .sum();
         Assertions.assertEquals(talks.size(), talksInConf);
     }
-
 
 
     private List<Talk> getTalkList() {

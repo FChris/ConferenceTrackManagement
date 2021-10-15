@@ -47,7 +47,7 @@ class SessionTest {
         boolean success = session.addTalk(constraintTalk);
 
         assertTrue(success);
-        assertEquals(session.getTalks().get(0), constraintTalk);
+        assertEquals(constraintTalk, session.getTalks().get(0));
 
         Talk hourTalk = new Talk("Full hour talk on programmer humour", 60);
         boolean fail = session.addTalk(hourTalk);
