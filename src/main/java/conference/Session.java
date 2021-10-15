@@ -42,7 +42,7 @@ public class Session {
     }
 
     public boolean addTalk(Talk talk) {
-        LocalTime newEndTime = currentEndTime.plusMinutes(talk.length());
+        LocalTime newEndTime = currentEndTime.plusMinutes(talk.getLength());
         if (newEndTime.isAfter(endTime)) {
             return false;
         }
