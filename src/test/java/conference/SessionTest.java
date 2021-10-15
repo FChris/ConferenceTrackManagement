@@ -9,7 +9,7 @@ import static org.junit.jupiter.api.Assertions.*;
 class SessionTest {
 
     @Test
-    public void initMorningSessionTest() {
+    public void testInitMorningSession() {
         Session morningSession = Session.createMorningSession();
         assertEquals(morningSession.getEndEvent().title(), "Lunch");
         assertEquals(morningSession.getStartTime().compareTo(LocalTime.of(9,0)), 0);
@@ -19,7 +19,7 @@ class SessionTest {
     }
 
     @Test
-    public void initAfternoonSessionTest() {
+    public void testInitAfternoonSession() {
         Session morningSession = Session.createAfternoonSession();
         assertEquals(morningSession.getEndEvent().title(), "Networking");
         assertEquals(morningSession.getStartTime().compareTo(LocalTime.of(13,0)), 0);
@@ -29,7 +29,7 @@ class SessionTest {
     }
 
     @Test
-    public void morningSessionToStringTest() {
+    public void testMorningSessionToString() {
         Session morningSession = Session.createMorningSession();
         morningSession.addTalk(new Talk("Three hour talk", 180));
         assertEquals("09:00AM Three hour talk 180min\n" +
@@ -37,7 +37,7 @@ class SessionTest {
     }
 
     @Test
-    public void afternoonShortSessionToStringTest() {
+    public void testAfternoonShortSessionToString() {
         Session morningSession = Session.createAfternoonSession();
         morningSession.addTalk(new Talk("Three hour talk", 180));
         assertEquals("01:00PM Three hour talk 180min\n" +
@@ -45,7 +45,7 @@ class SessionTest {
     }
 
     @Test
-    public void afternoonLongSessionToStringTest() {
+    public void testAfternoonLongSessionToString() {
         Session morningSession = Session.createAfternoonSession();
         morningSession.addTalk(new Talk("Three hour talk", 210));
         assertEquals("01:00PM Three hour talk 210min\n" +
@@ -53,7 +53,7 @@ class SessionTest {
     }
 
     @Test
-    public void addTalkToNewSession() {
+    public void testAddTalkToNewSession() {
         Talk hourTalk = new Talk("Full hour talk on constraint solvers", 60);
         Session session = Session.createMorningSession();
         boolean success = session.addTalk(hourTalk);
@@ -63,7 +63,7 @@ class SessionTest {
     }
 
     @Test
-    public void AddTalkToFullSession() {
+    public void testAddTalkToFullSession() {
         Talk constraintTalk = new Talk("3 hour talk on constraint solvers", 180);
         Session session = Session.createMorningSession();
         boolean success = session.addTalk(constraintTalk);
