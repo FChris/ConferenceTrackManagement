@@ -3,6 +3,8 @@ package conference;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 class TrackTest {
 
     @Test
@@ -17,7 +19,7 @@ class TrackTest {
     @Test
     public void addTalkToTrackWithFullMorningSession() {
         Track track = new Track();
-        Talk threeHourTalk = new Talk("Test Talk for 3 hours", 180);
+        Talk threeHourTalk = new Talk("Test Talk for three hours", 180);
         boolean success = track.addTalk(threeHourTalk);
         Assertions.assertTrue(success);
 
@@ -25,5 +27,20 @@ class TrackTest {
         success = track.addTalk(hourTalk);
         Assertions.assertTrue(success);
         Assertions.assertEquals(track.getAfternoonSession().getTalks().get(0), hourTalk);
+    }
+
+    @Test void trackToStringTest() {
+        Track track = new Track();
+        Talk threeHourTalk1 = new Talk("Three hour talk", 180);
+        Talk threeHourTalk2 = new Talk("Three hour talk number two", 180);
+        track.addTalk(threeHourTalk1);
+        track.addTalk(threeHourTalk2);
+
+        assertEquals("""
+                        09:00AM Three hour talk 180min
+                        12:00PM Lunch
+                        01:00PM Three hour talk number two 180min
+                        04:00PM Networking""",
+                track.toString());
     }
 }
