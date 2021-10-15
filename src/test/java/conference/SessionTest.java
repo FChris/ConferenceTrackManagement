@@ -40,7 +40,7 @@ class SessionTest {
     public void afternoonShortSessionToStringTest() {
         Session morningSession = Session.createAfternoonSession();
         morningSession.addTalk(new Talk("Three hour talk", 180));
-        assertEquals("13:00AM Three hour talk 180min\n" +
+        assertEquals("01:00PM Three hour talk 180min\n" +
                 "04:00PM Networking", morningSession.toString());
     }
 
@@ -48,7 +48,7 @@ class SessionTest {
     public void afternoonLongSessionToStringTest() {
         Session morningSession = Session.createAfternoonSession();
         morningSession.addTalk(new Talk("Three hour talk", 210));
-        assertEquals("13:00AM Three hour talk 180min\n" +
+        assertEquals("01:00PM Three hour talk 180min\n" +
                 "05:00PM Networking", morningSession.toString());
     }
 
