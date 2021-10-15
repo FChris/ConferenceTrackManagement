@@ -53,4 +53,20 @@ public class Conference {
     public List<Track> getTracks() {
         return tracks;
     }
+
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        for (int i = 0; i < tracks.size(); i++) {
+            builder.append("Track ");
+            builder.append(i+1);
+            builder.append(":\n");
+            builder.append(tracks.get(i).toString());
+
+            if (i+1 < tracks.size()) {
+                builder.append("\n\n");
+            }
+        }
+
+        return builder.toString();
+    }
 }
