@@ -26,4 +26,13 @@ public class Track {
     public Session getAfternoonSession() {
         return afternoonSession;
     }
+
+    @Override
+    public String toString() {
+        StringBuilder builder = new StringBuilder();
+        builder.append(morningSession.toString());
+        builder.append("\n");
+        builder.append(afternoonSession.toString());
+        return  builder.toString();
+    }
 }
