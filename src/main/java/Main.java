@@ -3,7 +3,6 @@ import conference.Talk;
 import org.apache.commons.cli.*;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -14,6 +13,10 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 import java.util.stream.Stream;
 
+/**
+ * Main class of the Conference Track Management which provides an interface to the user and prints
+ * the results to the console.
+ */
 public class Main {
 
     private static final Pattern MINUTE_PATTERN = Pattern.compile("[0-9][0-9]*min|lightning");
@@ -48,6 +51,14 @@ public class Main {
         }
     }
 
+    /**
+     * This method offers a cli interface to the user to input talk descriptions line by line and receive
+     * a conference schedule.
+     *
+     * Input descriptions are read line by line until an empty line is read.
+     * After the lines are read a conference object with tracks is created and the conferences string
+     * representation is printed to the console.
+     */
     private static void printConferenceFromConsoleInput() {
         System.out.println("Please write one talk per line.");
         System.out.println("Two finish the input enter an empty line.");
@@ -72,6 +83,13 @@ public class Main {
 
     }
 
+    /**
+     * This method reads input talk descriptions from a file and prints a schedule to the console.
+     *
+     * The file is read line by line where each line may contain exactly one talk description.
+     * After the lines are read a conference object with tracks is created and the conferences string
+     * representation is printed to the console.
+     */
     private static void printConferenceFromFile(String filePath) {
         final List<Talk> talks = readTalkFileList(filePath);
         if (!talks.isEmpty()) {
@@ -80,6 +98,15 @@ public class Main {
         }
     }
 
+    /**
+     * This method reads input talk descriptions from a file and returns a list of Talk objects.
+     *
+     * The file is read line by line where each line may contain exactly one talk description.
+     * If a malformed line is read or the file cannot be read, parsing is aborted, an error message
+     * is printed to console and an empty list is returned.
+     *
+     * @return list with Talk objects or empty list if file contains malformed lines
+     */
     public static List<Talk> readTalkFileList(String path) {
         ArrayList<Talk> talks = new ArrayList<>();
         AtomicBoolean error = new AtomicBoolean(false);
@@ -107,6 +134,19 @@ public class Main {
         return talks;
     }
 
+    /**
+     * Extracts a information from a line description, creates a Talk object and adds it to the given list of talks.
+     *
+     * This method is used this way instead of returning the talk object so it can be used in stream lambdas.
+     * The line must contain a title of the talk and exactly one duration description.
+     * The title is a simple string and the duration description is either the word lightning or the string "<dd>min"
+     * where dd is a number describing the duration in minutes.
+     *
+     *
+     * @param line with the description for the talk
+     * @param talks list to which the Talk object will be added
+     * @throws IllegalTalkFormatException if the format of the line is incorrect
+     */
     public static void extractTalkFromLine(final String line, final List<Talk> talks) throws IllegalTalkFormatException {
         final Matcher matcher = MINUTE_PATTERN.matcher(line);
 
