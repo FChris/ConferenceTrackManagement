@@ -3,7 +3,7 @@ package conference;
 /**
  * Record class that keeps constants for recurring Events during a conference.
  *
- * A conference event has a title and a lenght in minutes.
+ * A conference event has a title and a length in minutes.
  */
 public record ConferenceEvent(String title, int length) {
 

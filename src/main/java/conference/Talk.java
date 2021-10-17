@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter;
 /**
  * This class is the internal representation of a talk in the conference assigned to a time slot.
  *
- * The talk consists of a title, a length and after it has been assigned to a time slot a start time.
+ * The talk consists of a title, a length, and after it has been assigned to a time slot a start time.
  * The maximum duration of a talk is {@value MAX_TALK_LEGNTH}. At the moment this value is not configurable
  * as the structure of the whole conference is fixed as well.
  */

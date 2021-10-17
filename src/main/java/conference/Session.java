@@ -69,7 +69,7 @@ public class Session {
      * MorningSessions always end with the lunch event at 12pm.
      * Afternoon sessions end with a networking event which starts either start at 4pm or 5pm flat,
      * depending on the end time of the last talk.
-     * E.g. if the last talk ends at 3:59pm or beforee networking event starts at 4pm, if the last talk ends at 4:01pm
+     * E.g. if the last talk ends at 3:59pm or before networking event starts at 4pm, if the last talk ends at 4:01pm
      * or later the networking event will always start at 5pm.
      *
      * @return start time for the endEvent
