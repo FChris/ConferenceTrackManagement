@@ -142,7 +142,6 @@ public class Main {
      * The title is a simple string and the duration description is either the word lightning or the string "<dd>min"
      * where dd is a number describing the duration in minutes.
      *
-     *
      * @param line with the description for the talk
      * @param talks list to which the Talk object will be added
      * @throws IllegalTalkFormatException if the format of the line is incorrect
@@ -170,7 +169,11 @@ public class Main {
             length = Integer.parseInt(durationInMin);
         }
 
-        Talk talk = new Talk(line.replace(duration, "").trim(), length);
-        talks.add(talk);
+        try{
+            Talk talk = new Talk(line.replace(duration, "").trim(), length);
+            talks.add(talk);
+        } catch (IllegalArgumentException ex) {
+            throw new IllegalTalkFormatException(line);
+        }
     }
 }
