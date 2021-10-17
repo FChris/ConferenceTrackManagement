@@ -77,13 +77,15 @@ The tool makes to following assumptions about the input and goal of the schedule
 
 # Building
 
-##Windows:
+To build this project Java Development Kit (JDK) in Version 16 or higher is necessary.
+
+## Windows:
 
 ```
 .\gradlew.bat shadowJar
 ```
 
-##Linux:
+## Linux:
 
 ```
   ./gradlew shadowJar
@@ -92,7 +94,7 @@ The tool makes to following assumptions about the input and goal of the schedule
 Make sure `gradlew` is executable.
 To make it executable run: `chmod a+x gradlew`
 
-##Mac:
+## Mac:
 
 No build instructions yet, due to a lack of hardware to test. 
 Patches with Build instructions are welcome.
