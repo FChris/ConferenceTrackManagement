@@ -15,7 +15,7 @@ import java.util.List;
  * <p>
  * The underlying problem of assigning talks to tracks in a conference is similar to the bin packing problem, where
  * the sessions in the tracks represent bins and the talks represent the items to be packed.
- * The chosen algorithm corresponds to the the First-fit-decreasing algorithm.
+ * The chosen algorithm corresponds to the First-fit-decreasing algorithm.
  * The algorithm works as follows:
  * <p>
  *     <ol>

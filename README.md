@@ -61,7 +61,7 @@ Track 1:
 
 ## Assumptions
 
-The tool makes to following assumptions about input and goal of the schedule generation.
+The tool makes to following assumptions about the input and goal of the schedule generation.
 
 - Talk lengths are given in minutes or as lightning (5 min)
 - Talk lengths do not exceed 240min
