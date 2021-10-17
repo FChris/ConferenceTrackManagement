@@ -7,7 +7,7 @@ The Conference Track Management (CTM) tool organizes list of talks into a set of
 - A conference consists of multiple tracks
 - Each track consists of a morning and an afternoon session
 - Sessions contain a list of talks
-- Afternoon sessions start at 1 pm and end with an networking event
+- Afternoon sessions start at 1 pm and end with a networking event
 - The networking event starts between 4:00 and 5:00
 
 ### Algorithm
