@@ -33,7 +33,7 @@ public class Main {
         try {
             cmd = parser.parse(opts, args);
 
-            if (cmd.hasOption("i")) {
+            if (cmd.hasOption("i") && !cmd.hasOption("f")) {
                 printConferenceFromConsoleInput();
             }
 
