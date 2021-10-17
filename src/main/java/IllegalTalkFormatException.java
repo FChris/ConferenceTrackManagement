@@ -1,3 +1,5 @@
+import conference.Talk;
+
 /**
  * This IllegalTalkFormatException is a checked exception which should be thrown if a line contains a wrongly
  * formatted string representation of a talk.
@@ -18,6 +20,6 @@ public class IllegalTalkFormatException extends Exception {
      */
     public IllegalTalkFormatException(String line) {
         super("Illegal Format of Talk description for line: " + line + "\nTalks description must be of the format:" +
-            "Talkname {<Time in min>min|lightning} ");
+            "Talkname {<Time in min>min|lightning}; Max time in min is " + Talk.MAX_TALK_LEGNTH);
     }
 }
