@@ -18,8 +18,8 @@ public class Talk {
     public static final int MAX_TALK_LEGNTH = 240; // final as long as conference structure is not configurable
 
     private LocalTime startTime;
-    private String title;
-    private int length;
+    private final String title;
+    private final int length;
 
     /**
      * Initializes a new Talk with the given title and length.

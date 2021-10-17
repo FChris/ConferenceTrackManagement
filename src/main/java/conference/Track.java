@@ -8,8 +8,8 @@ package conference;
  */
 public class Track {
 
-    private Session morningSession;
-    private Session afternoonSession;
+    private final Session morningSession;
+    private final Session afternoonSession;
 
     /**
      * Initialize a Track with a pair of sessions.
