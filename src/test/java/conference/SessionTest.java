@@ -14,7 +14,7 @@ class SessionTest {
         assertEquals(morningSession.getEndEvent().title(), "Lunch");
         assertEquals(morningSession.getStartTime().compareTo(LocalTime.of(9,0)), 0);
         assertEquals(morningSession.getCurrentEndTime().compareTo(LocalTime.of(9,0)), 0);
-        assertEquals(morningSession.getEndTime().compareTo(LocalTime.of(12,0)), 0);
+        assertEquals(morningSession.getLatestEndTime().compareTo(LocalTime.of(12,0)), 0);
         assertTrue(morningSession.getTalks().isEmpty());
     }
 
@@ -24,7 +24,7 @@ class SessionTest {
         assertEquals(morningSession.getEndEvent().title(), "Networking");
         assertEquals(morningSession.getStartTime().compareTo(LocalTime.of(13,0)), 0);
         assertEquals(morningSession.getCurrentEndTime().compareTo(LocalTime.of(13,0)), 0);
-        assertEquals(morningSession.getEndTime().compareTo(LocalTime.of(17,0)), 0);
+        assertEquals(morningSession.getLatestEndTime().compareTo(LocalTime.of(17,0)), 0);
         assertTrue(morningSession.getTalks().isEmpty());
     }
 
