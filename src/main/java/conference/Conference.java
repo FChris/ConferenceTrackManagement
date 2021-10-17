@@ -27,7 +27,7 @@ import java.util.List;
  *          <li>If a new track was created, add it to the list of tracks</li>
  *      </ol>
  *      </li>
- *      <li>Repeat Step 2 until every item is assigned</li>
+ *      <li>Repeat Step 3 until every item is assigned</li>
  *      <li>Return the list of tracks</li>
  *     </ol>
  * </p>
